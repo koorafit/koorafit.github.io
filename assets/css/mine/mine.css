@@ -1,0 +1,4 @@
+#changing-word {
+    color: #f00; /* Initial color */
+    transition: color 0.5s ease; /* Add a smooth transition for color change */
+  }
