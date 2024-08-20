@@ -1,200 +1,221 @@
-<!DOCTYPE HTML>
-<!--
-	Arcana by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+package com.exseed.login.view
 
-<head>
-	<title>Koora Fit</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<link rel="stylesheet" href="assets/css/mine/slideshow.css" />
-	<link rel="stylesheet" href="assets/css/mine/caracelstyles/styles.css" />
-  
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+import android.animation.*
+import android.app.Activity
+import android.content.Intent
+import android.graphics.Color
+import android.graphics.Point
+import android.os.Build
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.WindowManager
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
+import androidx.fragment.app.Fragment
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.exseed.R
+import com.exseed.model.LanguageModel
+import kotlinx.android.synthetic.main.wizard_semen_colour_picker_view.*
 
-</head>
 
-<body class="is-preload">
-	<div id="page-wrapper">
+class LanguagePickerViewFragment() : Fragment() {
 
-		<!-- Header -->
-		<div id="header">
 
-			<!-- Logo -->
-			<!-- <h1><a href="index.html" id="logo">Arcana <em>by HTML5 UP</em></a></h1> -->
+    private var selectedItem = LanguageModel()
+    private var selectedItemPosition = 0
 
-			<!-- Nav -->
-			<nav id="nav">
-				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li><a href="aboutus.html">About us</a></li>
-					<li><a href="gallery.html">Gallery</a></li>
-					<li><a href="schedule.html">Schedule</a></li>
-					<li><a href="events.html">Events</a></li>
-					<li class="current"><a href="contactus.html">Contact us</a></li>
-				</ul>
-			</nav>
+    var statusBarDark = false
 
-		</div>
+    private var yearList: List<LanguageModel> = mutableListOf()
 
-			<!-- Main -->
-			<section class="wrapper style1">
-				<div class="container">
-					<div id="content">
-						<header>
-							<h2>Know More About Koor Fit</h2>
-							<p>simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-						</header>
-						<div class="row">
-							<div class="6u 12u$(medium)">
-								<section class="box">
-									<form method="post" action="#">
-										<div class="row uniform 50%">
-											<div class="12u"><input type="text" name="name" id="name" placeholder="Your Name" /></div>
-											<div class="12u"><input type="email" name="email" id="email" placeholder="Email Address" /></div>
-											<div class="12u"><input type="text" name="phone" id="phone" placeholder="Mobile Number" /></div>
-											<div class="12u"><textarea name="message" id="message" placeholder="Message" rows="6"></textarea></div>
-											<div class="12u"><ul class="actions"><li><input type="submit" value="Send Message" class="special" /></li></ul></div>
-										</div>
-									</form>
-								</section>
-							</div>
-							<div class="6u 12u$(medium)">
-								<section class="box">
-									<header>
-										<h3>Get in Touch</h3>
-									</header>
-									<ul class="contact">
-										<li class="icon solid fa-phone"><span class="label">Phone</span>+201023645781</li>
-										<li class="icon solid fa-envelope"><span class="label">Email</span><a href="#">Koorafit@example.com</a></li>
-										<li class="icon solid fa-clock"><span class="label">Working Hours</span>From 11 AM To 9 PM</li>
-									</ul>
-								</section>
-							</div>
-						</div>
-						<header>
-							<h2>Our Branches</h2>
-							<p>-----------</p>
-						</header>
-						<div class="row">
-							<div class="4u 12u$(small)">
-								<section class="box">
-									<i class="icon solid fa-map-marker"></i>
-									<h3>Elsheikh Zayed</h3>
-									<p>Degla Club, Neighborhood 5</p>
-								</section>
-							</div>
-							<div class="4u 12u$(small)">
-								<section class="box">
-									<i class="icon solid fa-map-marker"></i>
-									<h3>El dokki</h3>
-									<p>El zraeen Club, Thawra St</p>
-								</section>
-							</div>
-							<div class="4u 12u$(small)">
-								<section class="box">
-									<i class="icon solid fa-map-marker"></i>
-									<h3>Nasr City</h3>
-									<p>Coming Soon..</p>
-								</section>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- Footer -->
-				<div id="footer">
-					<div class="container">
-						<div class="row">
-							<section class="col-3 col-6-narrower col-12-mobilep">
-								<h3>Links to Stuff</h3>
-								<ul class="links">
-									<li><a href="#">Mattis et quis rutrum</a></li>
-									<li><a href="#">Suspendisse amet varius</a></li>
-									<li><a href="#">Sed et dapibus quis</a></li>
-									<li><a href="#">Rutrum accumsan dolor</a></li>
-									<li><a href="#">Mattis rutrum accumsan</a></li>
-									<li><a href="#">Suspendisse varius nibh</a></li>
-									<li><a href="#">Sed et dapibus mattis</a></li>
-								</ul>
-							</section>
-							<section class="col-3 col-6-narrower col-12-mobilep">
-								<h3>More Links to Stuff</h3>
-								<ul class="links">
-									<li><a href="#">Duis neque nisi dapibus</a></li>
-									<li><a href="#">Sed et dapibus quis</a></li>
-									<li><a href="#">Rutrum accumsan sed</a></li>
-									<li><a href="#">Mattis et sed accumsan</a></li>
-									<li><a href="#">Duis neque nisi sed</a></li>
-									<li><a href="#">Sed et dapibus quis</a></li>
-									<li><a href="#">Rutrum amet varius</a></li>
-								</ul>
-							</section>
-							<section class="col-6 col-12-narrower">
-								<h3>Get In Touch</h3>
-								<form>
-									<div class="row gtr-50">
-										<div class="col-6 col-12-mobilep">
-											<input type="text" name="name" id="name" placeholder="Name" />
-										</div>
-										<div class="col-6 col-12-mobilep">
-											<input type="email" name="email" id="email" placeholder="Email" />
-										</div>
-										<div class="col-12">
-											<textarea name="message" id="message" placeholder="Message" rows="5"></textarea>
-										</div>
-										<div class="col-12">
-											<ul class="actions">
-												<li><input type="submit" class="button alt" value="Send Message" /></li>
-											</ul>
-										</div>
-									</div>
-								</form>
-							</section>
-						</div>
-					</div>
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        requireActivity().overridePendingTransition(0, 0)
+        return inflater.inflate(R.layout.activity_create_profile_picker_view, container, false)
+    }
 
-					<!-- Icons -->
-						<ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-							<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-							<li><a href="#" class="icon brands fa-google-plus-g"><span class="label">Google+</span></a></li>
-						</ul>
+    override fun onResume() {
+        super.onResume()
 
-					<!-- Copyright -->
-						<div class="copyright">
-							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
 
-				</div>
 
-				    <!-- Footer -->
-					<div id="footer-container"> 
-						<!-- Include the footer.html file -->
-						 <script>
-							$(function () {
-								$("#footer-container").load("footer.html");
-							});
-						</script>
-					</div>
+        // Fade Animation for the Semi-Transparent Black Background
+        // Get the size of the size
+        val mDisplay = requireActivity().windowManager.defaultDisplay
+        val mDisplaySize = Point()
+        mDisplay.getSize(mDisplaySize)
+        val maxX = mDisplaySize.x
+        val maxY = mDisplaySize.y
 
-		</div>
+        // Set the background same as Display height
+        pickerviewbg.y = maxY.toFloat()
+        val alpha = 85 // Set Between 0-255
+        val alphaColor = ColorUtils.setAlphaComponent(Color.BLACK, alpha)
+        val colorAnimation = ValueAnimator.ofObject(ArgbEvaluator(), Color.TRANSPARENT, alphaColor)
+        colorAnimation.duration = 500 // milliseconds
+        colorAnimation.addUpdateListener { animator -> pickerviewtransbg.setBackgroundColor(animator.animatedValue as Int) }
+        colorAnimation.start()
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+        yearList = mutableListOf(
+            LanguageModel(
+                getString(R.string.settings_language_option_English),
+                ContextCompat.getDrawable(requireContext(), R.drawable.en_with_circle)
+            ),
+            LanguageModel(
+                getString(R.string.settings_language_option_swedish),
+                ContextCompat.getDrawable(requireContext(), R.drawable.sv_with_circle)
+            ),
+            LanguageModel(
+                getString(R.string.settings_language_option_italian),
+                ContextCompat.getDrawable(requireContext(), R.drawable.it_with_circle)
+            ),
+            LanguageModel(
+                getString(R.string.settings_language_option_french),
+                ContextCompat.getDrawable(requireContext(), R.drawable.fr_with_circle)
+            ),
+            LanguageModel(
+                getString(R.string.settings_language_option_German),
+                ContextCompat.getDrawable(requireContext(), R.drawable.de_with_circle)
+            ),
+            LanguageModel(
+                getString(R.string.settings_language_option_Spanish),
+                ContextCompat.getDrawable(requireContext(), R.drawable.es_with_circle)
+            ),
 
-	</body>
-</html>
+
+        )
+
+        // Empty click listener helps to stop the view from closing when you tap 'outside'
+        barview.setOnClickListener { }
+
+        // WheelView Customization
+        val wheelView = requireActivity().findViewById<WheelViewImage>(R.id.wheelview)
+        wheelView.selectedItemColor = R.color.text_black
+        wheelView.unselectedItemColor = R.color.text_black
+        wheelView.linesColor = R.color.text_black
+
+        wheelView.itemTextSize = 25f
+        //val font = ResourcesCompat.getFont(this, R.font.roboto)
+        //wheelView.itemFont = font
+
+        // Amount of items above and below the selected item
+        wheelView.offset = 1
+
+
+//
+//        // Check if default value exists, if not then show the first item of on the wheelView
+//        if (yearList.contains(defaultValue)) {
+//            val valueIndex = yearList.indexOf(defaultValue)
+//            wheelView.setSelection(valueIndex)
+//        } else {
+//            wheelView.setSelection(0)
+//        }
+//
+        // Add the list of items to the wheelView
+        wheelView.setItemsColour(yearList)
+//
+//        // Set the value you see once you open the PickerView as selected item, this will change later with the onWheelViewListener
+//        selectedItem = wheelView.getSelectedItem
+
+        // Set the position of the value you see once you open the PickerView as selected item position, this will change later with the onWheelViewListener
+        selectedItemPosition = wheelView.getSelectedIndex
+
+        // Returns the current selected item and position of the item after you scroll up/down
+        wheelView.onWheelViewListener = object : WheelViewImage.OnWheelViewListener() {
+            override fun onSelected(selectedIndex: Int, item: LanguageModel) {
+                selectedItem = item
+                selectedItemPosition = selectedIndex
+                // Return results to the MainActivity
+                returnResultsBack()
+
+                // Close PickerView
+                onBackPressed()
+
+            }
+        }
+
+        donebtn.setTextColor(Color.WHITE)
+
+
+        // Returns the final selected item and position after you pressed 'Done'
+        donebtn.setOnClickListener {
+            onBackPressed()
+
+
+        }
+
+
+        slideUp(pickerviewbg)
+
+    }
+
+    private fun returnResultsBack() {
+        val intent = Intent("languageSetup")
+        intent.putExtra("selectedItem", selectedItem.title)
+        LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
+    private fun setWindowFlag(activity: Activity, on: Boolean) {
+        val win = activity.window
+        val winParams = win.attributes
+        if (on) {
+            winParams.flags = winParams.flags or WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+        } else {
+            winParams.flags =
+                winParams.flags and WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS.inv()
+        }
+        win.attributes = winParams
+    }
+
+    fun onBackPressed() {
+        // Fade-Out Animation the Semi-Transparent Black Background
+        // Close PickerView with slide down animation
+        val alpha = 85 //between 0-255
+        val alphaColor = ColorUtils.setAlphaComponent(Color.BLACK, alpha)
+        val colorAnimation = ValueAnimator.ofObject(ArgbEvaluator(), alphaColor, Color.TRANSPARENT)
+        colorAnimation.duration = 500 // milliseconds
+        colorAnimation.addUpdateListener { animator -> pickerviewtransbg.setBackgroundColor(animator.animatedValue as Int) }
+        slideDown(pickerviewbg)
+        colorAnimation.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+                activity?.onBackPressed()
+            }
+        })
+        colorAnimation.start()
+    }
+
+
+    // Slide the view from its current position to below itself
+    private fun slideUp(view: View) {
+        ObjectAnimator.ofFloat(view, "translationY", 0f).apply {
+            duration = 600
+            start()
+        }
+    }
+
+    // Slide the view from below itself to the current position
+    private fun slideDown(view: View) {
+        val mDisplay = requireActivity().windowManager.defaultDisplay
+        val mDisplaySize = Point()
+        mDisplay.getSize(mDisplaySize)
+        val maxY = mDisplaySize.y
+        val animation = ObjectAnimator.ofFloat(view, "translationY", maxY.toFloat())
+        animation.duration = 600
+        animation.start()
+    }
+
+//    fun onWindowFocusChanged(hasFocus: Boolean) {
+//        super.onWindowFocusChanged(hasFocus)
+//        slideUp(pickerviewbg)
+//    }
+
+}
